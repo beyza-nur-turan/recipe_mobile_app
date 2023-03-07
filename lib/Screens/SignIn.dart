@@ -30,7 +30,7 @@ class SignIn extends StatelessWidget {
             // gradient:  LinearGradient(colors: [Color(0xfffffafa),Color(0xff836fff)]),
           ),
           child: Padding(
-            padding:const EdgeInsets.all(20),
+            padding:const EdgeInsets.all(10),
             child: ListView(
               children: <Widget>[
                 Padding(
