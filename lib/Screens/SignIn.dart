@@ -2,150 +2,134 @@
 
 import 'package:flutter/material.dart';
 import 'package:loginn/constants.dart';
+import 'package:loginn/widgets/textSigninWidget.dart';
 
-class SignIn extends StatelessWidget {
+class SignIn extends StatefulWidget {
   const SignIn({super.key});
+  @override
+  State<SignIn> createState() => _SignInState();
+}
 
+class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        Container(
-          decoration:const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/sonn.png'),
-              fit: BoxFit.scaleDown,
-              alignment: Alignment.topCenter
-            )
-          ),
+    return Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('assets/images/login.jpg'), fit: BoxFit.cover),
         ),
-        
-        Container(
-          
-          width: MediaQuery.of(context).size.width,
-          margin:const EdgeInsets.only(top:320 ),
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0),topRight: Radius.circular(15.0)),
-            color: Colors.white,
-            // gradient:  LinearGradient(colors: [Color(0xfffffafa),Color(0xff836fff)]),
-          ),
-          child: Padding(
-            padding:const EdgeInsets.all(10),
-            child: ListView(
-              children: <Widget>[
-                Padding(
-                  padding:const EdgeInsets.fromLTRB(0, 20, 0, 30),
-                  child: Container(
-                    color:const Color(0xfff5f5f5),
-                    child: TextFormField(
-                      style:const TextStyle(
-                        color: Colors.black,
-                        fontFamily: 'Raleway'
-                      ),
-                      decoration:const InputDecoration(
-                        border:BorderStyle.borderContainer,
-                        labelText: 'E-Mail',
-                        prefixIcon: Icon(Icons.person),prefixIconColor: kPrimaryColor,
-                        labelStyle: TextStyle(
-                          fontSize: 16
-                        )
-                      ),
-                    ),
-                  ),
-                ),
-                Container(
-                  color:const Color(0xfff5f5f5),
-                  child: TextFormField(
-                    obscureText: true,
-                    obscuringCharacter: "*",
-                    cursorColor: kPrimaryColor,
-                    style:const TextStyle(
-                      color: Colors.black,
-                      fontFamily: 'Raleway'
-                    ),
-                    decoration:const InputDecoration(
-                      border: BorderStyle.borderContainer,
-                      labelText: 'Şifre',
-                      prefixIcon: Icon(Icons.lock),
-                      prefixIconColor: kPrimaryColor,
-                      suffixIcon: Icon(Icons.visibility),
-                      suffixIconColor: kPrimaryColor,
-                      labelStyle: TextStyle(
-                          fontSize: 16
-                        )
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding:const EdgeInsets.only(top: 40),
-                  child: MaterialButton(
-                    onPressed: (){},
-                    
-                    color: kPrimaryColor,
-                    elevation: 0,
-                    minWidth: 400,
-                    height: 50,
-                    textColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)
-                    ),
-                    child:const Text("GİRİŞ YAP",
-                    style: TextStyle(
-                       fontSize: 16,
-                      fontFamily: 'Raleway',
-                      fontWeight: FontWeight.bold,
-                    ),
-                    ),
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(top: 20),
-                  child: Center(
-                    child: Text('Şifremi unuttum',
-                    style: TextStyle( 
-                      fontFamily: 'Raleway',
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold
-                    ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding:const EdgeInsets.only(top: 30),
-                  child: Center(
-                    child: RichText(
-                      text:const TextSpan(
-                        children: [
-                          TextSpan(
-                            text: "Bir hesabınız yok mu ?   ",
-                            style: TextStyle(
-                              fontFamily: 'Raleway',
-                              color: Colors.black,
-                              fontSize: 15,
+        child: Scaffold(
+          resizeToAvoidBottomInset: false,
+          backgroundColor: Colors.transparent,
+          body: Stack(
+            children: [
+              Container(
+                margin: const EdgeInsets.only(top: 60, left: 50),
+                width: 220,
+                height: 180,
+                color: Colors.transparent,
+                child: ClipOval(child: Image.asset('assets/images/22.png')),
+              ),
+              SingleChildScrollView(
+                child: Container(
+                  padding: EdgeInsets.only(
+                      top: MediaQuery.of(context).size.height * 0.5),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.only(left: 30, right: 30),
+                        child: Column(
+                          children: [
+                            const TextFormFieldWidget(
+                                deger: "E-Mail", icon: Icons.person),
+                            const SizedBox(
+                              height: 30,
+                            ),
+                            const TextFormFieldWidget(
+                              deger: "Şifre",
+                              icon: Icons.lock,
+                              suffixIcon: Icons.visibility,
+                              sufIconColor: siyah,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 40),
+                              child: MaterialButton(
+                                onPressed: () {},
+                                color: siyah,
+                                elevation: 0,
+                                minWidth: 330,
+                                height: 50,
+                                textColor: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30)),
+                                child: const Text(
+                                  "GİRİŞ YAP",
+                                  style: TextStyle(
+                                    color: loginpurple,
+                                    fontSize: 18,
+                                    fontFamily: 'Raleway',
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 40,
+                            ),
+                            Row(mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 30),
+                                  child: RichText(text:const TextSpan(
+                                            text: "Bir hesabınız yok mu ?   ",
+                                            style: TextStyle(
+                                                fontFamily: 'Cormorant Garamond',
+                                                color: Colors.black,
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w600)), ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 30),
+                                  child: Center(
+                                    child: TextButton(
+                                        onPressed: () {},
+                                        child: const Text(
+                                          "Üye Ol",
+                                          style: TextStyle(
+                                              fontSize: 18,
+                                              fontFamily: 'Cormorant Garamond',
+                                              color: Colors.red,
+                                              fontWeight: FontWeight.bold),
+                                        )),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 40,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              // children: [
+
+                              // ],
                             )
-                          ),
-                          TextSpan(
-                            
-                            text: "Üye ol",
-                            style: TextStyle(
-                              fontFamily: 'Raleway',
-                              color: kPrimaryColor,
-                              fontSize: 15,
-                            )
-                          )
-                        ]
-                      ),
-                    ),
+                          ],
+                        ),
+                      )
+                    ],
                   ),
-                )
-              ],
-            ),
+                ),
+              ),
+            ],
           ),
-        )
-      ],
-    );
+        ));
   }
 }
-class BorderStyle{
-  static const borderContainer=OutlineInputBorder(borderSide:BorderSide(color: kPrimaryColor),borderRadius: BorderRadius.all(Radius.circular(10.0)));
+
+class BorderStyle {
+  static const borderContainer = OutlineInputBorder(
+      borderSide: BorderSide(color: loginpurple, width: 2.5),
+      borderRadius: BorderRadius.all(Radius.circular(30)));
 }
