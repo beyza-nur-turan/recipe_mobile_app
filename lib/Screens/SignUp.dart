@@ -1,88 +1,78 @@
 import 'package:flutter/material.dart';
 import 'package:loginn/constants.dart';
-import 'package:loginn/widgets/textwidget.dart';
+import 'package:loginn/widgets/textSignupWidget.dart';
 
 class SignUp extends StatelessWidget {
-  final String label_text;
-  const SignUp({super.key, required this.label_text});
+  const SignUp({super.key, });
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Scaffold(resizeToAvoidBottomInset: false,
-    body: Center(
-      child: Container(
-          width: size.width * 1,
-          decoration: const BoxDecoration(
-              gradient:
-                  LinearGradient(colors: [Color(0xfff5ebe0), Color(0xff6818a5)])),
-          child: SizedBox(
-              width: size.width * 0.9,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const Field(
-                    label_text: "Ad soyad",
-                    icon: Icons.person_pin,
-                  ),
-                  const Field(
-                    label_text: "Kullanıcı adı",
-                    icon: Icons.person,
-                  ),
-                  const Field(
-                    label_text: "Şifre",
-                    icon: Icons.lock,
-                  ),
-                  const Field(
-                    label_text: "E-Mail",
-                    icon: Icons.mail,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20.0),
-                    child: SizedBox(
-                      width: size.width * 0.7,
-                      height: size.height * 0.07,
-                      child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                  side: const BorderSide(color: darkPurple,width: 2),
-                                  borderRadius: BorderRadius.circular(15)),
-                              backgroundColor: Colors.white),
-                          onPressed: () {},
-                          child: const Text(
-                            "ÜYE OL",
-                            style: TextStyle(
-                              color: kPrimaryColor,
-                              fontSize: 20,fontWeight:FontWeight.bold
-                            ),
-                          )),
+
+    return Container(
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+            image: AssetImage('assets/images/register.jpg'), fit: BoxFit.cover),
+            
+      ),
+      
+      child: Scaffold(resizeToAvoidBottomInset: false,
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        ),
+        body: Stack(
+          children: [
+            Container(
+              width: 220,height: 180,color: Colors.transparent,
+               
+                child: ClipOval(
+                          child: Image.asset('assets/images/22.png')),
+              
+        ),
+              
+            
+            SingleChildScrollView(
+              child: Container(
+                padding: EdgeInsets.only(top: size.height * 0.25),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.only(left: 40, right: 40),
+                      child: Column(
+                        children:const [
+                          textSignupWidget(upText:"Ad Soyad", iconUp: Icons.person ,),
+                          textSignupWidget(upText: "Kullanıcı Adı", iconUp: Icons.person_2_outlined,),
+                          textSignupWidget(upText: "Şifre", iconUp: Icons.lock,),
+                          textSignupWidget(upText: "E-Mail", iconUp: Icons.mail,),
+                          
+                        ],
+                      ),
                     ),
-                  )
-                ],
-              ))),
-    ));
+                     
+                          Padding(
+                                  padding: const EdgeInsets.only(top: 30),
+                                  child: Center(
+                                    child: TextButton(
+                                        onPressed: () {},
+                                        child: const Text(
+                                          "Üye Ol",
+                                          style: TextStyle(
+                                              fontSize: 27,
+                                              color: siyah,
+                                              fontWeight: FontWeight.bold),
+                                        )),
+                                  ),
+                                ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
-
-
-// child: Column(mainAxisAlignment: MainAxisAlignment.center,
-                // crossAxisAlignment: CrossAxisAlignment.center,
-                // children: const[TextField(
-                //         style: TextStyle(
-                //           fontSize: 16,
-                //           color: Colors.white,
-                //         ),
-                //         obscureText: true,//girilen karakterler gözükmeyecek
-                //         obscuringCharacter: '*',//girilen karakterin nasıl gizleneceği
-                //         cursorColor: Colors.black,//TextField içerisindeki cursorun rengi
-
-                //         decoration: InputDecoration(
-                //           labelText: "Şifrenizi Giriniz",//TextField içerisinde istediğimiz bir metni yazabiliriz
-                //           labelStyle: TextStyle(color: Colors.black),//label textinin tasarımı
-                //           border: OutlineInputBorder(),//TextField için kenarları yuvarlak bir bordür
-                //           fillColor: Colors.white,//TextField içerisinin rengi
-                //           filled: true,//TextField içerisinin rengi olsunmu? Evet dedik],),
-                //     ),),
-
-                //   ]),

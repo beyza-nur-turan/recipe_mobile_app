@@ -5,3 +5,5 @@ const iconDarkColor=Color(0xff363636);
 const sari=Color(0xfff5bd1f);
 const siyah=Color(0xff000000);
 const darkPurple=Color(0xff68228b);
+const loginpurple=Color(0xff606AD9);
+const registerpurple=Color(0xff6C68F0);
