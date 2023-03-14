@@ -1,0 +1,39 @@
+ {
+  "project_info": {
+    "project_number": "243778081464",
+    "project_id": "eat-mobile-app",
+    "storage_bucket": "eat-mobile-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:243778081464:android:2e3388727863715efc1a4d",
+        "android_client_info": {
+          "package_name": "com.example.loginn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "243778081464-4qu617rk6i03dadpbo2vcr9qiqdu2tri.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7xMXv5rJbmFxh5k6NIURSCejDlFOi7JY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "243778081464-4qu617rk6i03dadpbo2vcr9qiqdu2tri.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
