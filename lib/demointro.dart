@@ -12,12 +12,11 @@ class Demointro extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black,
         body: Container(
             width: MediaQuery.of(context).size.width * 1,
             decoration: const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage("assets/images/1siyah.png"),
+                    image: AssetImage("assets/images/intro.png"),
                     fit: BoxFit.fitWidth)),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -83,3 +82,4 @@ class Demointro extends StatelessWidget {
             )));
   }
 }
+

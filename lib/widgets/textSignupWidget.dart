@@ -3,15 +3,17 @@ import 'package:loginn/constants.dart';
 class textSignupWidget extends StatelessWidget {
   final String upText;
   final IconData iconUp;
+  final TextEditingController? controllerUp;
   const textSignupWidget({
-    super.key, required this.upText, required this.iconUp,
+    super.key, required this.upText, required this.iconUp, required this.controllerUp,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top:10,bottom: 20),
-      child: TextField(
+      child: TextFormField(
+        controller: controllerUp,
         style: const TextStyle(color: Colors.black),
         decoration: InputDecoration(
              enabledBorder: BorderStyle.borderContainer,
