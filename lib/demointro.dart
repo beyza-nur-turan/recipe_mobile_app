@@ -12,12 +12,19 @@ class Demointro extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black,
         body: Container(
             width: MediaQuery.of(context).size.width * 1,
             decoration: const BoxDecoration(
+              gradient: LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      colors: [
+        Color.fromARGB(255, 255, 255, 255),
+        Color.fromARGB(255, 220, 216, 221),
+      ],
+    ),
                 image: DecorationImage(
-                    image: AssetImage("assets/images/1siyah.png"),
+                    image: AssetImage("assets/images/intro-removebg-preview (1).png"),
                     fit: BoxFit.fitWidth)),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -34,17 +41,16 @@ class Demointro extends StatelessWidget {
                           onPressed: () {
                             router.push(const SignIn());
                           },
-                          color: loginpurple,
+                          color:const Color.fromARGB(255, 27, 27, 27),
                           elevation: 0,
                           minWidth: 150,
                           height: 50,
-                          textColor: Colors.white,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20)),
                           child: const Text(
                             "GİRİŞ YAP",
                             style: TextStyle(
-                              color: siyah,
+                              color: loginpurple,
                               fontSize: 18,
                               fontFamily: 'Raleway',
                               fontWeight: FontWeight.bold,
@@ -61,17 +67,16 @@ class Demointro extends StatelessWidget {
                     onPressed: () {
                       router.push(const SignUp());
                     },
-                    color: loginpurple,
+                    color:const Color.fromARGB(255, 27, 27, 27),
                     elevation: 0,
                     minWidth: 150,
                     height: 50,
-                    textColor: Colors.white,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20)),
                     child: const Text(
                       "KAYIT OL",
                       style: TextStyle(
-                        color: siyah,
+                        color: loginpurple,
                         fontSize: 18,
                         fontFamily: 'Raleway',
                         fontWeight: FontWeight.bold,

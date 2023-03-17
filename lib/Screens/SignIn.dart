@@ -1,8 +1,10 @@
-// ignore_for_file: file_names
-
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:loginn/constants.dart';
 import 'package:loginn/widgets/textSigninWidget.dart';
+import 'package:loginn/core/config/app_router.gr.dart';
+import '../main.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -11,6 +13,8 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+   //String _email, _password;
+  final FirebaseAuth auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,10 +29,10 @@ class _SignInState extends State<SignIn> {
             children: [
               Container(
                 margin: const EdgeInsets.only(top: 60, left: 50),
-                width: 220,
-                height: 180,
+                width: MediaQuery.of(context).size.width*0.50,
+                height: MediaQuery.of(context).size.height*0.27,
                 color: Colors.transparent,
-                child: ClipOval(child: Image.asset('assets/images/22.png')),
+                child: ClipOval(child: Image.asset('assets/images/Nefis_Tarifler__6_-removebg-preview.png')),
               ),
               SingleChildScrollView(
                 child: Container(
@@ -93,13 +97,13 @@ class _SignInState extends State<SignIn> {
                                   padding: const EdgeInsets.only(top: 30),
                                   child: Center(
                                     child: TextButton(
-                                        onPressed: () {},
+                                        onPressed: () {router.push(const SignUp());},
                                         child: const Text(
                                           "Üye Ol",
                                           style: TextStyle(
                                               fontSize: 18,
                                               fontFamily: 'Cormorant Garamond',
-                                              color: Colors.red,
+                                              color: altbutton,
                                               fontWeight: FontWeight.bold),
                                         )),
                                   ),
