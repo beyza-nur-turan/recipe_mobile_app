@@ -4,17 +4,19 @@ import 'package:loginn/constants.dart';
 class TextFormFieldWidget extends StatelessWidget {
    final String deger;
    final IconData icon;
-   final IconData? suffixIcon;
+   final IconButton? suffixIcon;
    final Color? sufIconColor;
+   final TextEditingController controller;
+   
   const TextFormFieldWidget({
-    super.key, required this.deger, required this.icon, this.suffixIcon, this.sufIconColor,
+    super.key, required this.deger, required this.icon, this.suffixIcon, this.sufIconColor, required this.controller,
   });
  
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      
+      controller: controller,
       style: const TextStyle(
           color: Colors.black, fontFamily: 'Raleway'),
       decoration:  InputDecoration(
@@ -23,7 +25,7 @@ class TextFormFieldWidget extends StatelessWidget {
           labelText: deger,
           prefixIcon: Icon(icon),
           prefixIconColor: siyah,
-          suffixIcon: Icon(suffixIcon),
+          suffixIcon: suffixIcon,
           suffixIconColor: sufIconColor,
           labelStyle:const TextStyle(fontSize: 16)),
     );

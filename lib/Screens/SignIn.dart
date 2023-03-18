@@ -1,22 +1,39 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:loginn/Screens/HomePage.dart';
 import 'package:loginn/constants.dart';
 import 'package:loginn/widgets/textSigninWidget.dart';
 import 'package:loginn/core/config/app_router.gr.dart';
+import 'package:provider/provider.dart';
+import '../auth/Auth.dart';
 import '../main.dart';
+import 'package:loginn/Screens/HomePage.dart';
+
 
 class SignIn extends StatefulWidget {
+  static  String routeName= '/login';
   const SignIn({super.key});
   @override
   State<SignIn> createState() => _SignInState();
 }
 
+
 class _SignInState extends State<SignIn> {
-   //String _email, _password;
+   final TextEditingController emailController = TextEditingController();
+   final TextEditingController passwordController = TextEditingController();
   final FirebaseAuth auth = FirebaseAuth.instance;
+  void loginUser() {
+    context.read<FirebaseAuthMethods>().loginWithEmail(
+          email: emailController.text,
+          password: passwordController.text,
+          context: context,
+        );
+  }
+  
   @override
   Widget build(BuildContext context) {
+    
     return Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -45,21 +62,117 @@ class _SignInState extends State<SignIn> {
                         margin: const EdgeInsets.only(left: 30, right: 30),
                         child: Column(
                           children: [
-                            const TextFormFieldWidget(
-                                deger: "E-Mail", icon: Icons.person),
+                             TextFormFieldWidget(controller: emailController,
+                                deger: "E-Mail", icon: Icons.person ,),
                             const SizedBox(
                               height: 30,
                             ),
-                            const TextFormFieldWidget(
+                             TextFormFieldWidget(controller: passwordController,
                               deger: "Şifre",
                               icon: Icons.lock,
-                              suffixIcon: Icons.visibility,
+                              suffixIcon: IconButton(onPressed: (){}, icon:const Icon(Icons.visibility)),
                               sufIconColor: siyah,
                             ),
                             Padding(
                               padding: const EdgeInsets.only(top: 40),
                               child: MaterialButton(
-                                onPressed: () {},
+                                onPressed: () async {loginUser;final auth = FirebaseAuth.instance;
+              try {
+                final UserCredential userCredential = await auth.signInWithEmailAndPassword(
+                  email: emailController.text,
+                        password: passwordController.text,
+                );
+                if (userCredential.user != null) {
+                  // Kullanıcı oturum açtı, ana sayfaya yönlendirin
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const HomePage()),
+                  );
+                }
+
+              } 
+              on FirebaseAuthException catch (e) {
+                final alert=e.code;
+                
+//    showDialog(
+//   context: context,
+//   builder: (BuildContext context) {
+//     return AlertDialog(
+//       title:const Text('Uyarı!'),
+//       content: Text(alert),
+//       actions: <Widget>[
+//         ElevatedButton(
+//           child:const Text('Kapat'),
+//           onPressed: () {
+//             Navigator.of(context).pop();
+//           },
+//         ),
+//       ],
+//     );
+//   },
+// );
+
+  
+                if (alert == 'user-not-found') {
+                   showDialog(
+  context: context,
+  builder: (BuildContext context) {
+    return AlertDialog(
+      title:const Text('Uyarı!'),
+      content: Text("Bir hata oluştu: ${e.message}"),
+      actions: <Widget>[
+        ElevatedButton(
+          child:const Text('Kapat'),
+          onPressed: () {localization.translate('tr');
+            Navigator.of(context).pop();
+          },
+        ),
+      ],
+    );
+  },
+);
+                } else if (alert == 'wrong-password') {
+                   showDialog(
+  context: context,
+  builder: (BuildContext context) {
+    return AlertDialog(
+      title:const Text('Uyarı!'),
+      content:const Text("Girilen şifre hatalı"),
+      actions: <Widget>[
+        ElevatedButton(
+          child:const Text('Kapat'),
+          onPressed: () {localization.translate('tr');
+            Navigator.of(context).pop();
+          },
+        ),
+      ],
+    );
+  },
+);
+                }
+                else if(alert=='invalid-email'){
+                   showDialog(
+  context: context,
+  builder: (BuildContext context) {
+    return AlertDialog(
+      title:const Text('Uyarı!'),
+      content:const Text("Geçersiz mail adresi"),
+      actions: <Widget>[
+        ElevatedButton(
+          child:const Text('Kapat'),
+          onPressed: () {localization.translate('tr');
+            Navigator.of(context).pop();
+          },
+        ),
+      ],
+    );
+  },
+);
+                }
+                
+              }
+              },
+                                
                                 color: siyah,
                                 elevation: 0,
                                 minWidth: 330,

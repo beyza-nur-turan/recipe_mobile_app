@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:loginn/constants.dart';
 import 'package:loginn/widgets/textSignupWidget.dart';
-import 'package:loginn/auth/signupAuth.dart';
+import 'package:loginn/auth/Auth.dart';
 import 'package:provider/provider.dart';
 import 'package:loginn/core/config/app_router.gr.dart';
 
 import '../main.dart';
 
 class SignUp extends StatefulWidget {
+  static const String routeName = '/signup';
   const SignUp({super.key});
 
   @override
@@ -33,7 +34,8 @@ class _SignUpState extends State<SignUp> {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('assets/images/login.jpg'), fit: BoxFit.cover),
+            image: AssetImage('assets/images/login.jpg'),
+             fit: BoxFit.cover),
       ),
       child: Scaffold(
         resizeToAvoidBottomInset: false,
