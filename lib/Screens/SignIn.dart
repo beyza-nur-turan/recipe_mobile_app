@@ -1,4 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
+<<<<<<< Updated upstream
+=======
+//import 'package:firebase_core/firebase_core.dart';
+>>>>>>> Stashed changes
 import 'package:flutter/material.dart';
 import 'package:flutter_localization/flutter_localization.dart';
 import 'package:loginn/Screens/HomePage.dart';
