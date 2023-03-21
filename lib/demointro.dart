@@ -1,23 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:loginn/constants.dart';
 import 'package:loginn/core/config/app_router.gr.dart';
 import 'package:loginn/main.dart';
+import 'package:loginn/widgets/FieldButtonWidget.dart';
+import 'package:lottie/lottie.dart';
 
 class Demointro extends StatelessWidget {
   const Demointro({super.key});
-  // final imageUrl =
-  //     'https://images.pexels.com/photos/3338497/pexels-photo-3338497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
-  final login = "GİRİŞ YAP";
-  final signIn = "KAYIT OL";
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
             width: MediaQuery.of(context).size.width * 1,
             decoration: const BoxDecoration(
+              gradient: LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      colors: [
+        Color.fromARGB(255, 220, 232, 242),
+        Color.fromARGB(255, 116, 114, 189),
+      ],
+    ),
                 image: DecorationImage(
-                    image: AssetImage("assets/images/intro.png"),
+                    image: AssetImage("assets/images/intro-removebg-preview (1).png"),
                     fit: BoxFit.fitWidth)),
+                    
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.end,
@@ -28,58 +35,32 @@ class Demointro extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(top: 40),
-                        child: MaterialButton(
-                          onPressed: () {
-                            router.push(const SignIn());
-                          },
-                          color: loginpurple,
-                          elevation: 0,
-                          minWidth: 150,
-                          height: 50,
-                          textColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                          child: const Text(
-                            "GİRİŞ YAP",
-                            style: TextStyle(
-                              color: siyah,
-                              fontSize: 18,
-                              fontFamily: 'Raleway',
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
+                        padding:const  EdgeInsets.only(top: 40),
+                        child: FieldButton(onTap: (){ Scaffold(
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            
+            Lottie.network(
+              'https://assets10.lottiefiles.com/packages/lf20_sqg0bxz5.json',
+              width: 200,
+              height: 200,
+            ),
+           const Text("Pişiriliyor...")
+          ],
+        ),
+      ) ;router.push(const SignIn());},text:'  Giriş Yap',),
                       ),
                     ],
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 99),
-                  child: MaterialButton(
-                    onPressed: () {
-                      router.push(const SignUp());
-                    },
-                    color: loginpurple,
-                    elevation: 0,
-                    minWidth: 150,
-                    height: 50,
-                    textColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    child: const Text(
-                      "KAYIT OL",
-                      style: TextStyle(
-                        color: siyah,
-                        fontSize: 18,
-                        fontFamily: 'Raleway',
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
+                  child: FieldButton(text: 'Kayıt Ol', onTap:(){ router.push(const SignUp());}),
                 ),
               ],
             )));
   }
 }
+
 
