@@ -4,8 +4,9 @@ class textSignupWidget extends StatelessWidget {
   final String upText;
   final IconData iconUp;
    final TextEditingController? controllerUp;
+   final IconButton?suffixIcon;
   const textSignupWidget({
-    super.key, required this.upText, required this.iconUp, this.controllerUp,
+    super.key, required this.upText, required this.iconUp, this.controllerUp, this.suffixIcon, 
   });
 
   @override
@@ -25,9 +26,11 @@ class textSignupWidget extends StatelessWidget {
             labelStyle: const TextStyle(color: Colors.black),
             prefixIcon: Icon(iconUp),
             prefixIconColor: siyah,
+            suffixIcon: suffixIcon,
             focusedBorder:const OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(27)),
               borderSide:  BorderSide(
-                color: Colors.black,
+                color: usePurple,
               ),
             ),
             
@@ -38,6 +41,6 @@ class textSignupWidget extends StatelessWidget {
 }
 class BorderStyle {
   static const borderContainer = OutlineInputBorder(
-      borderSide: BorderSide(color: loginpurple, width: 2.5),
+      borderSide: BorderSide(color: usePurple, width: 2.5),
       borderRadius: BorderRadius.all(Radius.circular(27)));
 }

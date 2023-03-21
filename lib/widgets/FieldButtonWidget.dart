@@ -21,7 +21,7 @@ class FieldButton extends StatelessWidget {
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20)),
       child: Text(text,style:const TextStyle(
-          color: loginpurple,
+          color: usePurple,
           fontSize: 18,
           fontFamily: 'Raleway',
           fontWeight: FontWeight.bold,

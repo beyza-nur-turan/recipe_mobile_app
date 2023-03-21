@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:loginn/constants.dart';
+import 'package:loginn/core/config/app_router.gr.dart';
+import 'package:loginn/main.dart';
 import 'package:loginn/widgets/textSignupWidget.dart';
 import 'package:loginn/auth/Auth.dart';
 import 'package:provider/provider.dart';
-import 'package:loginn/core/config/app_router.gr.dart';
-
-import '../main.dart';
 
 class SignUp extends StatefulWidget {
   static const String routeName = '/signup';
@@ -34,8 +33,7 @@ class _SignUpState extends State<SignUp> {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('assets/images/login.jpg'),
-             fit: BoxFit.cover),
+            image: AssetImage('assets/images/login.jpg'), fit: BoxFit.cover),
       ),
       child: Scaffold(
         resizeToAvoidBottomInset: false,
@@ -48,13 +46,10 @@ class _SignUpState extends State<SignUp> {
           children: [
             Container(
               margin: const EdgeInsets.only(left: 60, bottom: 520),
-                width: MediaQuery.of(context).size.width*0.50,
-                height: MediaQuery.of(context).size.height*0.27,
+              width: MediaQuery.of(context).size.width * 0.4,
+              height: MediaQuery.of(context).size.height * 0.27,
               color: Colors.transparent,
-              child: ClipOval(
-                  child: Image.asset(
-                'assets/images/Nefis_Tarifler__6_-removebg-preview.png',
-              )),
+              child: ClipOval(child: Image.asset('assets/images/Nefis_Tarifler__6_-removebg-preview.png')),
             ),
             SingleChildScrollView(
               child: Container(
@@ -74,12 +69,13 @@ class _SignUpState extends State<SignUp> {
                           ),
                           textSignupWidget(
                             upText: "Şifre",
-                            iconUp: Icons.person_2_outlined,
+                            iconUp: Icons.lock,
+                            suffixIcon: IconButton(onPressed: (){}, icon:const Icon(Icons.visibility,color: Colors.black,) ),
                             controllerUp: passwordController,
                           ),
                           const textSignupWidget(
                             upText: "Telefon",
-                            iconUp: Icons.lock,
+                            iconUp: Icons.phone,
                             controllerUp: null,
                           ),
                           textSignupWidget(
@@ -90,35 +86,31 @@ class _SignUpState extends State<SignUp> {
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10),
-                      child: Center(
-                        child: MaterialButton(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(25)),
-                            onPressed: signUpUser,
-                            color: siyah,
-                            elevation: 0,
-                            minWidth: 200,
-                            height: 50,
-                            child: const Text(
-                              "Kayıt Ol",
-                              style: TextStyle(
-                                fontFamily: 'Lobster',
-                                fontSize: 28,
-                                color: loginpurple,
-                              ),
-                            )),
+                    Container(margin:const EdgeInsets.only(left:110,top:10 ),
+                    padding:const EdgeInsets.only(left: 40,right: 40),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: usePurple),color:const Color.fromARGB(255, 34, 33, 34),
+                        borderRadius: BorderRadius.circular(20.0),
                       ),
+                      child: TextButton(
+                          onPressed: signUpUser,
+                          child: const Text(
+                            "Üye Ol",
+                            style: TextStyle(
+                              fontFamily: 'Cormorant Garamond',
+                                fontSize: 27,
+                                color: usePurple,
+                                ),
+                          )),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(top: 4),
+                          padding: const EdgeInsets.only(top: 2),
                           child: RichText(
                             text: const TextSpan(
-                                text: "Üye misiniz ?   ",
+                                text: "Kaydınız var mı? ?   ",
                                 style: TextStyle(
                                     fontFamily: 'Cormorant Garamond',
                                     color: Colors.black,
@@ -127,16 +119,18 @@ class _SignUpState extends State<SignUp> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 4),
+                          padding: const EdgeInsets.only(top: 2),
                           child: Center(
                             child: TextButton(
-                                onPressed: () {router.push(const SignIn());},
+                                onPressed: () {
+                                  router.push(const SignIn());
+                                },
                                 child: const Text(
                                   "Giriş Yap",
                                   style: TextStyle(
-                                      fontSize: 18,
+                                      fontSize: 19,
                                       fontFamily: 'Cormorant Garamond',
-                                      color: altbutton,
+                                      color: usePurple,
                                       fontWeight: FontWeight.bold),
                                 )),
                           ),

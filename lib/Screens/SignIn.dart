@@ -1,8 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-<<<<<<< Updated upstream
-=======
 //import 'package:firebase_core/firebase_core.dart';
->>>>>>> Stashed changes
 import 'package:flutter/material.dart';
 import 'package:flutter_localization/flutter_localization.dart';
 import 'package:loginn/Screens/HomePage.dart';
@@ -12,7 +9,6 @@ import 'package:loginn/core/config/app_router.gr.dart';
 import 'package:provider/provider.dart';
 import '../auth/Auth.dart';
 import '../main.dart';
-import 'package:loginn/Screens/HomePage.dart';
 
 
 class SignIn extends StatefulWidget {
@@ -187,7 +183,7 @@ class _SignInState extends State<SignIn> {
                                 child: const Text(
                                   "GİRİŞ YAP",
                                   style: TextStyle(
-                                    color: loginpurple,
+                                    color: usePurple,
                                     fontSize: 18,
                                     fontFamily: 'Raleway',
                                     fontWeight: FontWeight.bold,
@@ -251,6 +247,6 @@ class _SignInState extends State<SignIn> {
 
 class BorderStyle {
   static const borderContainer = OutlineInputBorder(
-      borderSide: BorderSide(color: loginpurple, width: 2.5),
+      borderSide: BorderSide(color: usePurple, width: 2.5),
       borderRadius: BorderRadius.all(Radius.circular(30)));
 }

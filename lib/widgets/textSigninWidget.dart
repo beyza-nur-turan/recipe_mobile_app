@@ -21,18 +21,24 @@ class TextFormFieldWidget extends StatelessWidget {
           color: Colors.black, fontFamily: 'Raleway'),
       decoration:  InputDecoration(
           enabledBorder: BorderStyle.borderContainer,
-          fillColor: loginpurple,
+          fillColor: usePurple,
           labelText: deger,
           prefixIcon: Icon(icon),
           prefixIconColor: siyah,
           suffixIcon: suffixIcon,
-          suffixIconColor: sufIconColor,
+          suffixIconColor: sufIconColor,floatingLabelStyle:const TextStyle(color: iconDarkColor,fontWeight:FontWeight.normal,fontSize: 16),
+          focusedBorder:const OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(27)),
+              borderSide:  BorderSide(
+                color: usePurple,
+              ),
+            ),
           labelStyle:const TextStyle(fontSize: 16)),
     );
   }
 }
 class BorderStyle {
   static const borderContainer = OutlineInputBorder(
-      borderSide: BorderSide(color: loginpurple, width: 2.5),
+      borderSide: BorderSide(color: usePurple, width: 2.5),
       borderRadius: BorderRadius.all(Radius.circular(30)));
 }
