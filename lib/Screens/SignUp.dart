@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:loginn/constants.dart';
+import 'package:loginn/core/config/app_router.gr.dart';
+import 'package:loginn/main.dart';
 import 'package:loginn/widgets/textSignupWidget.dart';
-import 'package:loginn/auth/signupAuth.dart';
+import 'package:loginn/auth/Auth.dart';
 import 'package:provider/provider.dart';
 
 class SignUp extends StatefulWidget {
+  static const String routeName = '/signup';
   const SignUp({super.key});
 
   @override
@@ -22,7 +25,6 @@ class _SignUpState extends State<SignUp> {
           context: context,
         );
   }
-  
 
   @override
   Widget build(BuildContext context) {
@@ -43,15 +45,15 @@ class _SignUpState extends State<SignUp> {
         body: Stack(
           children: [
             Container(
-              margin:const EdgeInsets.only(left: 60,bottom: 520),
-              width: MediaQuery.of(context).size.width*0.4,
-                height: MediaQuery.of(context).size.height*0.27,
+              margin: const EdgeInsets.only(left: 60, bottom: 520),
+              width: MediaQuery.of(context).size.width * 0.4,
+              height: MediaQuery.of(context).size.height * 0.27,
               color: Colors.transparent,
-              child: ClipOval(child: Image.asset('assets/images/22.png')),
+              child: ClipOval(child: Image.asset('assets/images/Nefis_Tarifler__6_-removebg-preview.png')),
             ),
             SingleChildScrollView(
               child: Container(
-                margin: EdgeInsets.only(top: 45),
+                margin: const EdgeInsets.only(top: 45),
                 padding: EdgeInsets.only(top: size.height * 0.25),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,15 +67,16 @@ class _SignUpState extends State<SignUp> {
                             iconUp: Icons.person,
                             controllerUp: null,
                           ),
-                           textSignupWidget(
+                          textSignupWidget(
                             upText: "Şifre",
-                            iconUp: Icons.person_2_outlined,
+                            iconUp: Icons.lock,
+                            suffixIcon: IconButton(onPressed: (){}, icon:const Icon(Icons.visibility,color: Colors.black,) ),
                             controllerUp: passwordController,
                           ),
-                         const textSignupWidget(
+                          const textSignupWidget(
                             upText: "Telefon",
-                            iconUp: Icons.lock,
-                            controllerUp:null ,
+                            iconUp: Icons.phone,
+                            controllerUp: null,
                           ),
                           textSignupWidget(
                             upText: "E-Mail",
@@ -83,19 +86,56 @@ class _SignUpState extends State<SignUp> {
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 30),
-                      child: Center(
-                        child: TextButton(
-                            onPressed: signUpUser,
-                            child: const Text(
-                              "Üye Ol",
-                              style: TextStyle(
-                                  fontSize: 27,
-                                  color: siyah,
-                                  fontWeight: FontWeight.bold),
-                            )),
+                    Container(margin:const EdgeInsets.only(left:110,top:10 ),
+                    padding:const EdgeInsets.only(left: 40,right: 40),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: usePurple),color:const Color.fromARGB(255, 34, 33, 34),
+                        borderRadius: BorderRadius.circular(20.0),
                       ),
+                      child: TextButton(
+                          onPressed: signUpUser,
+                          child: const Text(
+                            "Üye Ol",
+                            style: TextStyle(
+                              fontFamily: 'Cormorant Garamond',
+                                fontSize: 27,
+                                color: usePurple,
+                                ),
+                          )),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 2),
+                          child: RichText(
+                            text: const TextSpan(
+                                text: "Kaydınız var mı? ?   ",
+                                style: TextStyle(
+                                    fontFamily: 'Cormorant Garamond',
+                                    color: Colors.black,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600)),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 2),
+                          child: Center(
+                            child: TextButton(
+                                onPressed: () {
+                                  router.push(const SignIn());
+                                },
+                                child: const Text(
+                                  "Giriş Yap",
+                                  style: TextStyle(
+                                      fontSize: 19,
+                                      fontFamily: 'Cormorant Garamond',
+                                      color: usePurple,
+                                      fontWeight: FontWeight.bold),
+                                )),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
