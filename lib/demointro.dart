@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:loginn/core/config/app_router.gr.dart';
-import 'package:loginn/main.dart';
+import 'package:loginn/Screens/LottieIn.dart';
 import 'package:loginn/widgets/FieldButtonWidget.dart';
-import 'package:lottie/lottie.dart';
+import 'Screens/LottieUp.dart';
 
-class Demointro extends StatelessWidget {
+class Demointro extends StatefulWidget {
   const Demointro({super.key});
+
+  @override
+  _DemointroState createState() => _DemointroState();
+}
+class _DemointroState extends State<Demointro> {
+  
+  
  
   @override
   Widget build(BuildContext context) {
@@ -17,18 +23,21 @@ class Demointro extends StatelessWidget {
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
       colors: [
-        Color.fromARGB(255, 220, 232, 242),
-        Color.fromARGB(255, 116, 114, 189),
+        
+        Color.fromARGB(255, 242, 242, 242),
+        Color.fromARGB(255, 228, 226, 229),
       ],
     ),
                 image: DecorationImage(
-                    image: AssetImage("assets/images/intro-removebg-preview (1).png"),
+                    image: AssetImage("assets/lottie/output-onlinegiftools (4).gif"),
                     fit: BoxFit.fitWidth)),
-                    
+
+
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
+                
                 Padding(
                   padding: const EdgeInsets.only(bottom: 100),
                   child: Column(
@@ -36,27 +45,31 @@ class Demointro extends StatelessWidget {
                     children: [
                       Padding(
                         padding:const  EdgeInsets.only(top: 40),
-                        child: FieldButton(onTap: (){ Scaffold(
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            
-            Lottie.network(
-              'https://assets10.lottiefiles.com/packages/lf20_sqg0bxz5.json',
-              width: 200,
-              height: 200,
-            ),
-           const Text("Pişiriliyor...")
-          ],
-        ),
-      ) ;router.push(const SignIn());},text:'  Giriş Yap',),
+                        child:FieldButton(
+  
+  onTap: () async {
+    await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) =>const LottieInPage()),
+    );
+  },  text: 'Giriş Yap',
+)
+ ,
                       ),
                     ],
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 99),
-                  child: FieldButton(text: 'Kayıt Ol', onTap:(){ router.push(const SignUp());}),
+                  child: FieldButton(
+  
+  onTap: () async {
+    await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) =>const LottieUpPage()),
+    );
+  },  text: 'Kayıt Ol',
+),
                 ),
               ],
             )));

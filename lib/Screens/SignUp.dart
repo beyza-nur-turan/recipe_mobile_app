@@ -30,7 +30,10 @@ class _SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    return Container(
+    return WillPopScope( onWillPop: () async {
+        router.push(const Demointro());
+        return false;
+      },child: Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
             image: AssetImage('assets/images/login.jpg'), fit: BoxFit.cover),
@@ -49,7 +52,7 @@ class _SignUpState extends State<SignUp> {
               width: MediaQuery.of(context).size.width * 0.4,
               height: MediaQuery.of(context).size.height * 0.27,
               color: Colors.transparent,
-              child: ClipOval(child: Image.asset('assets/images/Nefis_Tarifler__6_-removebg-preview.png')),
+              child: ClipOval(child: Image.asset('assets/lottie/output-onlinegiftools (5).gif')),
             ),
             SingleChildScrollView(
               child: Container(
@@ -97,7 +100,6 @@ class _SignUpState extends State<SignUp> {
                           child: const Text(
                             "Üye Ol",
                             style: TextStyle(
-                              fontFamily: 'Cormorant Garamond',
                                 fontSize: 27,
                                 color: usePurple,
                                 ),
@@ -144,6 +146,8 @@ class _SignUpState extends State<SignUp> {
           ],
         ),
       ),
-    );
+    ),);
+    
+     
   }
 }

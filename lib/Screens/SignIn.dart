@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 //import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localization/flutter_localization.dart';
+//import 'package:flutter_localization/flutter_localization.dart';
 import 'package:loginn/Screens/HomePage.dart';
 import 'package:loginn/constants.dart';
 import 'package:loginn/widgets/textSigninWidget.dart';
@@ -31,13 +31,18 @@ class _SignInState extends State<SignIn> {
         );
   }
   
+bool ObscureText=false;
+bool obscureText =true;
   @override
   Widget build(BuildContext context) {
-    
-    return Container(
+    //WillPopScope kullanarak geri tuşuna bastığımızda gidilecek sayfayı belirledik
+    return WillPopScope( onWillPop: () async {
+        router.push(const Demointro());
+        return false;
+      },child: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('assets/images/login.jpg'), fit: BoxFit.cover),
+              image: AssetImage('assets/images/login.jpg'),fit: BoxFit.cover),
         ),
         child: Scaffold(
           resizeToAvoidBottomInset: false,
@@ -45,11 +50,11 @@ class _SignInState extends State<SignIn> {
           body: Stack(
             children: [
               Container(
-                margin: const EdgeInsets.only(top: 60, left: 50),
+                margin: const EdgeInsets.only(top: 60, left: 60),
                 width: MediaQuery.of(context).size.width*0.50,
                 height: MediaQuery.of(context).size.height*0.27,
                 color: Colors.transparent,
-                child: ClipOval(child: Image.asset('assets/images/Nefis_Tarifler__6_-removebg-preview.png')),
+                child: ClipOval(child: Image.asset('assets/lottie/output-onlinegiftools (5).gif')),
               ),
               SingleChildScrollView(
                 child: Container(
@@ -62,15 +67,17 @@ class _SignInState extends State<SignIn> {
                         margin: const EdgeInsets.only(left: 30, right: 30),
                         child: Column(
                           children: [
-                             TextFormFieldWidget(controller: emailController,
+                             TextFormFieldWidget(obscureText: ObscureText, controller: emailController,
                                 deger: "E-Mail", icon: Icons.person ,),
                             const SizedBox(
                               height: 30,
                             ),
-                             TextFormFieldWidget(controller: passwordController,
+                             TextFormFieldWidget(obscureText: obscureText, controller: passwordController,
                               deger: "Şifre",
                               icon: Icons.lock,
-                              suffixIcon: IconButton(onPressed: (){}, icon:const Icon(Icons.visibility)),
+                              suffixIcon: IconButton(onPressed: (){setState(() {
+                                obscureText=!obscureText;
+                              });}, icon: Icon(obscureText ? Icons.visibility_off :Icons.visibility),),
                               sufIconColor: siyah,
                             ),
                             Padding(
@@ -241,7 +248,8 @@ class _SignInState extends State<SignIn> {
               ),
             ],
           ),
-        ));
+        )),);
+    
   }
 }
 

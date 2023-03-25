@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../utils/showSnackBar.dart';
@@ -72,7 +71,7 @@ class FirebaseAuthMethods {
   Future<void> sendEmailVerification(BuildContext context) async {
     try {
       _auth.currentUser!.sendEmailVerification();
-      showSnackBar(context, "E-posta doğrulaması Firebase'e gönderildi!");
+      showSnackBar(context, "Üye kaydınız başarılı bir şekilde oluşturulmuştur.");
     } on FirebaseAuthException catch (e) {
       showSnackBar(context, e.message!); // Display error message
     }

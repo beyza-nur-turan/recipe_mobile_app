@@ -8,8 +8,9 @@ import 'Introduction.dart';
 import 'Language.dart';
 import 'auth/Auth.dart';
 import 'core/config/app_router.gr.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
+//import 'package:flutter/services.dart';  durum çubuğu gizlenmesi için
 final FlutterLocalization localization = FlutterLocalization.instance;
 
 
@@ -26,6 +27,10 @@ class MyApp extends StatefulWidget {
     @override
   State<MyApp> createState() => _MyAppState();}
   class _MyAppState extends State<MyApp>{
+//     void main() {
+//   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
+//   runApp(const MyApp());
+// }
 
   @override
 void initState() {
@@ -45,6 +50,9 @@ void _onTranslatedLanguage(Locale? locale) {
     setState(() {});
 }
   Widget build(BuildContext context) {
+    //uygulamada üstteki durum çubuğunu gizlemek için aşağıdaki kodu kullandık
+  // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
+  //  runApp(const MyApp());
     return  MultiProvider(
       providers: [
         Provider<FirebaseAuthMethods>(
