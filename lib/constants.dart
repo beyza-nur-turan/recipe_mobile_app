@@ -11,3 +11,4 @@ const screenColor=Color(0xff8544FF);
 const son=Color(0xff6B2EE1);
 const siyah=Color(0xff000000);
 const altbutton=Color(0xff6C68F0);
+const linear=LinearGradient(colors: [Colors.black,Colors.white]);

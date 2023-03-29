@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:loginn/constants.dart';
 
-import '../sideBar/MakeMenu.dart';
+import '../NavigationBar/MakeMenu.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -17,12 +17,11 @@ class _HomePageState extends State<HomePage> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(drawer: MakeMenu(),appBar: AppBar(
+      backgroundColor: usePurple,
       ),
-      backgroundColor: Colors.white,
         body: Column(
       mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        GNav(
+      children: [GNav(
             mainAxisAlignment: MainAxisAlignment.center,
             backgroundColor: Colors.white,
             rippleColor:const Color.fromARGB(255, 134, 128, 165), //butona  bastığın an rengin dalgalanması
@@ -63,6 +62,7 @@ class _HomePageState extends State<HomePage> {
                 text: 'Profilim',
               )
             ])
+        
       ],
     ));
   }
