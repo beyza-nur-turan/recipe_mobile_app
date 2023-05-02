@@ -67,12 +67,14 @@ bool obscureText =true;
                         margin: const EdgeInsets.only(left: 30, right: 30),
                         child: Column(
                           children: [
-                             TextFormFieldWidget(obscureText: ObscureText, controller: emailController,
+                             TextFormFieldWidget(keyboardType: TextInputType.emailAddress,
+                              obscureText: ObscureText, controller: emailController,
                                 deger: "E-Mail", icon: Icons.person ,),
                             const SizedBox(
                               height: 30,
                             ),
-                             TextFormFieldWidget(obscureText: obscureText, controller: passwordController,
+                             TextFormFieldWidget(keyboardType: TextInputType.text,
+                              obscureText: obscureText, controller: passwordController,
                               deger: "Şifre",
                               icon: Icons.lock,
                               suffixIcon: IconButton(onPressed: (){setState(() {

@@ -1,42 +1,30 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:loginn/constants.dart';
-import 'package:loginn/main.dart';
 import '../NavigationBar/Communication.dart';
-import '../NavigationBar/MakeMenu.dart';
-import 'addRecipe.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class RecipeHome extends StatefulWidget {
+  const RecipeHome({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<RecipeHome> createState() => _RecipeHomeState();
 }
 
-class _HomePageState extends State<HomePage> {
-   
-  @override
-  Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-     Future<List<Object?>> getRecipe() async {
+class _RecipeHomeState extends State<RecipeHome> {
+  final firestore = FirebaseFirestore.instance;
+
+  Future<List<Object?>> getRecipe() async {
     final snapshot =
         await FirebaseFirestore.instance.collection('recipe').get();
     final List<DocumentSnapshot> documents = snapshot.docs;
     return documents.map((doc) => doc.data()).toList();
   }
 
-    return Scaffold(drawer: MakeMenu(),appBar: AppBar(backgroundColor: usePurple ,actions: [
-   IconButton(
-            onPressed: () {
-              
-            },
-            icon: const Icon(Icons.search),
-          )
-        ],
-      ),
-      
-         body: FutureBuilder(
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return FutureBuilder(
       future: getRecipe(),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
@@ -90,24 +78,18 @@ class _HomePageState extends State<HomePage> {
                           
                         ],
                       ),
-                      
                     ],
-                    
                   ),
                 );
               },
             );
           }
         } else {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         }
       },
-    ));
-    
+    );
   }
-}
-class TextStyles{
-  static const testStyle=TextStyle(fontWeight: FontWeight.w900,color: usePurple,fontSize: 16);
 }
