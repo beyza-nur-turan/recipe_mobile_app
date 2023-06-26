@@ -36,19 +36,28 @@ dependencies:
   auto_route: ^5.0.4
   auto_route_generator: ^5.0.3
   lottie: ^2.2.0
-  cloud_firestore: ^4.4.4
-  firebase_core: ^2.9.0
-  firebase_auth: ^4.2.10
+  #cloud_firestore: ^4.4.4
+  cloud_firestore: ^4.7.1
+  #firebase_core: ^2.9.0
+  firebase_core: ^2.13.0
+  #firebase_auth: ^4.2.10
+  firebase_auth: ^4.6.1
   provider: ^6.0.1
+  #flutter_lints: ^2.0.1
   flutter_lints: ^2.0.1
   flutter_launcher_icons: ^0.12.0
   flutter_localization: ^0.1.10
   google_nav_bar: ^5.0.6
   flutter_svg: ^2.0.4
   image_picker: ^0.8.7+2
-  firebase_storage: ^11.1.0
+  #firebase_storage: ^11.1.0
+  firebase_storage: ^11.2.1
   uuid: ^3.0.7
   http: ^0.13.5
+  url_launcher: ^6.1.11
+  url_launcher_android: ^6.0.34
+  fluttertoast: ^8.2.1
+  debounce_builder: ^0.9.0
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
 flutter_icons:

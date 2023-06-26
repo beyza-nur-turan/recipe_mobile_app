@@ -14,8 +14,6 @@ import 'package:provider/provider.dart';
 import 'package:flutter/services.dart'; // durum çubuğu gizlenmesi için
 import 'package:firebase_storage/firebase_storage.dart';
 final FlutterLocalization localization = FlutterLocalization.instance;
-
-
 Future<void> main()async {WidgetsFlutterBinding.ensureInitialized();
 await Firebase.initializeApp();
 FirebaseStorage storage = FirebaseStorage.instance;
@@ -30,10 +28,6 @@ class MyApp extends StatefulWidget {
     @override
   State<MyApp> createState() => _MyAppState();}
   class _MyAppState extends State<MyApp>{
-//     void main() {
-//   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
-//   runApp(const MyApp());
-// }
 
   @override
 void initState() {
@@ -55,9 +49,10 @@ void _onTranslatedLanguage(Locale? locale) {
   Widget build(BuildContext context) {
     //uygulamada üstteki durum çubuğunu gizlemek için aşağıdaki kod kullanıldı
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
-   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
   statusBarColor: Colors.transparent, // Durum çubuğu arka plan rengi
   statusBarIconBrightness: Brightness.light, // Durum çubuğu ikonları rengi
+  
 ));
 
    runApp(const MyApp());
@@ -77,7 +72,7 @@ void _onTranslatedLanguage(Locale? locale) {
       debugShowCheckedModeBanner: false,
       title: "demo",
       theme: ThemeData(primarySwatch: Colors.blue),
-      routerDelegate:router.delegate() ,
+      routerDelegate:router.delegate() ,//Gezinme (routing) işlemlerini yönetmek için kullanılan sınıfları belirtir. 
       routeInformationParser: router.defaultRouteParser(),
        
     ));

@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:loginn/constants.dart';
 import 'package:loginn/core/config/app_router.gr.dart';
@@ -9,7 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../widgets/textSignupWidget.dart';
 
-class SignUp extends StatefulWidget {
+class SignUp extends StatefulWidget { 
   static const String routeName = '/signup';
   const SignUp({super.key});
 
@@ -20,29 +19,75 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   final _firestore = FirebaseFirestore.instance;
   //final FocusNode _emailFocusNode = FocusNode();
-   TextEditingController emailController = TextEditingController();
-   TextEditingController passwordController = TextEditingController();
-   TextEditingController nameController = TextEditingController();
-   TextEditingController phoneController = TextEditingController();
-   String uid = FirebaseAuth.instance.currentUser!.uid;
-    bool obscure_text =true;
-    bool Obscure_text=false;
-   signUpUser() async {
-    _firestore.collection("users").doc(uid).set({
-      "ad-soyad": nameController.text,
-      "e-mail": emailController.text,
-      "telefon": phoneController.text,
-      "şifre": passwordController.text
-    });
-    context.read<FirebaseAuthMethods>().signUpWithEmail(
-          email: emailController.text,
-          password: passwordController.text,
-          context: context,
-        );
-        
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+ String? uid;
+  
+  bool obscure_text = true;
+  bool Obscure_text = false;
+  //  signUpUser() async {
+  //   _firestore.collection("users").doc(uid).set({
+  //     "ad-soyad": nameController.text,
+  //     "e-mail": emailController.text,
+  //     "telefon": phoneController.text,
+  //     "şifre": passwordController.text
+  //   });
+  //   context.read<FirebaseAuthMethods>().signUpWithEmail(
+  //         email: emailController.text,
+  //         password: passwordController.text,
+  //         context: context,
+  //       );
+
+  // }
+ signUpUser() async {
+  try {
+    final currentUser = FirebaseAuth.instance.currentUser;
+    if (currentUser != null) {
+      uid = currentUser.uid;
+      await _firestore.collection("users").doc(uid).set({
+        "ad-soyad": nameController.text,
+        "e-mail": emailController.text,
+        "telefon": phoneController.text,
+        "şifre": passwordController.text,
+      });
+      // Perform authentication separately
+      BuildContext currentContext = context;
+await Future.delayed(Duration.zero, () async {
+  await currentContext.read<FirebaseAuthMethods>().signUpWithEmail(
+    email: emailController.text,
+    password: passwordController.text,
+    context: currentContext,
+  );
+});
+      // Handle successful registration here, e.g., navigate to a new screen
+    }
+  } catch (e) {
+    // Handle any errors that occur during registration
+    print("Error during registration: $e");
+    // You can display an error message to the user or handle the error as needed
   }
+}
+
 
   @override
+   
+  void initState() {
+    super.initState();
+    FirebaseAuth.instance.authStateChanges().listen((User? currentUser) {
+      if (currentUser != null) {
+        setState(() {
+          uid = currentUser.uid;
+        });
+      } else {
+        setState(() {
+          uid = null;
+        });
+      }
+    });
+  }
+
   Widget build(BuildContext context) {
     CollectionReference userRef = _firestore.collection("users");
     Size size = MediaQuery.of(context).size;
@@ -86,36 +131,45 @@ class _SignUpState extends State<SignUp> {
                         margin: const EdgeInsets.only(left: 40, right: 40),
                         child: Column(
                           children: [
-                             TextSignupWidget(obscure_text:Obscure_text,
+                            TextSignupWidget(
+                              obscure_text: Obscure_text,
                               keyboardTYpe: TextInputType.text,
                               upText: "Ad Soyad",
                               iconUp: Icons.person,
                               controllerUp: null,
                             ),
-                            TextSignupWidget(obscure_text: Obscure_text,
+                            TextSignupWidget(
+                              obscure_text: Obscure_text,
                               keyboardTYpe: TextInputType.emailAddress,
                               //FocusNode:_emailFocusNode ,
                               upText: "E-Mail",
                               iconUp: Icons.mail,
                               controllerUp: emailController,
                             ),
-                             TextSignupWidget(obscure_text: Obscure_text, keyboardTYpe: TextInputType.phone,
+                            TextSignupWidget(
+                              obscure_text: Obscure_text,
+                              keyboardTYpe: TextInputType.phone,
                               upText: "Telefon",
                               iconUp: Icons.phone,
                               controllerUp: null,
                             ),
-                            TextSignupWidget(obscure_text: obscure_text, keyboardTYpe: TextInputType.text,
+                            TextSignupWidget(
+                              obscure_text: obscure_text,
+                              keyboardTYpe: TextInputType.text,
                               upText: "Şifre",
                               iconUp: Icons.lock,
                               suffixIcon: IconButton(
-                                  onPressed: (){setState(() {
-                                obscure_text=!obscure_text;
-                              });}, icon: Icon(obscure_text ? Icons.visibility_off :Icons.visibility),),
+                                onPressed: () {
+                                  setState(() {
+                                    obscure_text = !obscure_text;
+                                  });
+                                },
+                                icon: Icon(obscure_text
+                                    ? Icons.visibility_off
+                                    : Icons.visibility),
+                              ),
                               controllerUp: passwordController,
-                            
                             ),
-                            
-                            
                           ],
                         ),
                       ),
@@ -128,7 +182,7 @@ class _SignUpState extends State<SignUp> {
                           borderRadius: BorderRadius.circular(20.0),
                         ),
                         child: TextButton(
-                            onPressed:signUpUser,
+                            onPressed: signUpUser,
                             child: const Text(
                               "Üye Ol",
                               style: TextStyle(
@@ -175,9 +229,7 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ),
               ),
-              
             ],
-            
           ),
         ),
       ),
