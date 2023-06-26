@@ -81,4 +81,3 @@ class _FaqTileState extends State<FaqTile> {
     );
   }
 }
-

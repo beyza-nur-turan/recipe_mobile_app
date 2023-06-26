@@ -19,7 +19,6 @@ class Categories extends StatefulWidget {
 class _CategoriesState extends State<Categories> {
   @override
   Widget build(BuildContext context) {
-
     Future<List<dynamic>> fetchCategories() async {
       final categories =
           await FirebaseFirestore.instance.collection('categories').get();
