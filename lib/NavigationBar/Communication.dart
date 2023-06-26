@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loginn/constants.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 class Communication extends StatelessWidget {
   const Communication({super.key});
 
@@ -7,7 +8,7 @@ class Communication extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor:const Color.fromARGB(255, 215, 217, 233),
+      backgroundColor:  Colors.white,
       body: Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -18,7 +19,7 @@ class Communication extends StatelessWidget {
               shape: BoxShape.circle,
               color: Colors.white,
               border: Border.all(
-                color:const Color.fromARGB(255, 18, 29, 144),
+                color: const Color.fromARGB(255, 18, 29, 144),
                 width: 3.0,
               ),
             ),
@@ -28,7 +29,6 @@ class Communication extends StatelessWidget {
               radius: 65,
             ),
           ),
-
           const SizedBox(
             height: 20,
           ),
@@ -44,7 +44,7 @@ class Communication extends StatelessWidget {
                 color: Color.fromARGB(255, 49, 57, 145),
                 fontFamily: "lobster"),
           ),
-         const SizedBox(
+          const SizedBox(
             height: 70,
           ),
           Container(
@@ -53,20 +53,23 @@ class Communication extends StatelessWidget {
             child: Card(
               color: usePurple,
               child: Row(
-                children: const [
-                  SizedBox(
+                children:  [
+                const  SizedBox(
                     width: 20,
                   ),
-                  Icon(
-                    Icons.mail,
-                    color: Color.fromARGB(255, 24, 32, 112),
+                  SvgPicture.asset(
+                    "assets/icons/mail.svg",
+                    width: size.width * 0.07,
+                    color: Color.fromARGB(255, 49, 57, 145),
                   ),
-                  SizedBox(
+                 const SizedBox(
                     width: 20,
                   ),
-                  Text(
+                const Text(
                     "nefistarifler@gmail.com",
-                    style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 24, 32, 112)),
+                    style: TextStyle(
+                        fontSize: 20,
+                        color:Colors.white),
                   )
                 ],
               ),
@@ -81,25 +84,28 @@ class Communication extends StatelessWidget {
             child: Card(
               color: usePurple,
               child: Row(
-                children: const [
-                  SizedBox(
+                children: [
+                  const SizedBox(
                     width: 20,
                   ),
-                  Icon(
-                    Icons.social_distance,
-                    color: Color.fromARGB(255, 24, 32, 112),
+                  SvgPicture.asset(
+                    "assets/icons/facebook.svg",
+                    width: size.width * 0.07,color: Color.fromARGB(255, 49, 57, 145)
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                   ),
-                  Text(
+                  const Text(
                     "nefis_tarifler",
-                    style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 24, 32, 112)),
+                    style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white),
                   )
                 ],
               ),
             ),
-          ),const SizedBox(
+          ),
+          const SizedBox(
             height: 40,
           ),
           Container(
@@ -108,20 +114,23 @@ class Communication extends StatelessWidget {
             child: Card(
               color: usePurple,
               child: Row(
-                children: const [
-                  SizedBox(
+                children: [
+                  const SizedBox(
                     width: 20,
                   ),
-                  Icon(
-                    Icons.social_distance,
-                    color: Color.fromARGB(255, 24, 32, 112),
+                  SvgPicture.asset(
+                    "assets/icons/instagram.svg",
+                    width: size.width * 0.07,
+                    color: Color.fromARGB(255, 49, 57, 145),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                   ),
-                  Text(
+                  const Text(
                     "nefis_tarifler",
-                    style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 24, 32, 112)),
+                    style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white),
                   )
                 ],
               ),

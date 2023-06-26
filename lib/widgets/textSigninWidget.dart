@@ -8,13 +8,15 @@ class TextFormFieldWidget extends StatelessWidget {
    final Color? sufIconColor;
    final TextEditingController controller;
    final bool obscureText;
+   final TextInputType? keyboardType;
   const TextFormFieldWidget({
-    super.key, required this.deger, required this.icon, this.suffixIcon, this.sufIconColor, required this.controller, required this.obscureText,
+    super.key, required this.deger, required this.icon, this.suffixIcon, this.sufIconColor, required this.controller, required this.obscureText, required this.keyboardType,
   });
  
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType: keyboardType,
       obscureText: obscureText,
       controller: controller,
       style: const TextStyle(

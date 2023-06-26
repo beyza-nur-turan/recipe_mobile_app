@@ -1,12 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import '../Screens/SignIn.dart';
 import '../utils/showSnackBar.dart';
-
 class FirebaseAuthMethods {
   final FirebaseAuth _auth;
   FirebaseAuthMethods(this._auth);
-
   // FOR EVERY FUNCTION HERE
   // POP THE ROUTE USING: Navigator.of(context).pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
 
@@ -68,11 +67,24 @@ class FirebaseAuthMethods {
   }
 
   // EMAIL VERIFICATION
-  Future<void> sendEmailVerification(BuildContext context) async {
-    try {
-      _auth.currentUser!.sendEmailVerification();
-      showSnackBar(context, "Üye kaydınız başarılı bir şekilde oluşturulmuştur.");
-    } on FirebaseAuthException catch (e) {
-      showSnackBar(context, e.message!); // Display error message
-    }
-  }}
+Future<void> sendEmailVerification(BuildContext context) async {
+  try {
+    await _auth.currentUser!.sendEmailVerification();
+    final snackBar =  SnackBar(
+      content: Text('Üye kaydınız başarılı bir şekilde oluşturulmuştur.'),
+      duration: const Duration(seconds: 2),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar).closed.then((_) {
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => const SignIn(),
+      ));
+    });
+  } on FirebaseAuthException catch (e) {
+    showSnackBar(context, e.message!); // Display error message
+  }
+}
+
+
+}
+
+

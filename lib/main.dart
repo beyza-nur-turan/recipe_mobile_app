@@ -1,21 +1,22 @@
+import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localization/flutter_localization.dart';
 import 'package:loginn/Screens/HomePage.dart';
-import 'Home.dart';
+//import 'Home.dart';
 import 'Introduction.dart';
 import 'Language.dart';
 import 'auth/Auth.dart';
 import 'core/config/app_router.gr.dart';
 //import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
-//import 'package:flutter/services.dart';  durum çubuğu gizlenmesi için
+import 'package:flutter/services.dart'; // durum çubuğu gizlenmesi için
+import 'package:firebase_storage/firebase_storage.dart';
 final FlutterLocalization localization = FlutterLocalization.instance;
-
-
 Future<void> main()async {WidgetsFlutterBinding.ensureInitialized();
 await Firebase.initializeApp();
+FirebaseStorage storage = FirebaseStorage.instance;
    runApp(const MyApp());}
 
  final router= AppRouter();
@@ -27,10 +28,6 @@ class MyApp extends StatefulWidget {
     @override
   State<MyApp> createState() => _MyAppState();}
   class _MyAppState extends State<MyApp>{
-//     void main() {
-//   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
-//   runApp(const MyApp());
-// }
 
   @override
 void initState() {
@@ -45,14 +42,20 @@ void initState() {
     super.initState();
 }
 
-/// the setState function here is a must to add
+
 void _onTranslatedLanguage(Locale? locale) {
     setState(() {});
 }
   Widget build(BuildContext context) {
-    //uygulamada üstteki durum çubuğunu gizlemek için aşağıdaki kodu kullandık
-  // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
-  //  runApp(const MyApp());
+    //uygulamada üstteki durum çubuğunu gizlemek için aşağıdaki kod kullanıldı
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
+   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+  statusBarColor: Colors.transparent, // Durum çubuğu arka plan rengi
+  statusBarIconBrightness: Brightness.light, // Durum çubuğu ikonları rengi
+  
+));
+
+   runApp(const MyApp());
     return  MultiProvider(
       providers: [
         Provider<FirebaseAuthMethods>(
@@ -69,7 +72,7 @@ void _onTranslatedLanguage(Locale? locale) {
       debugShowCheckedModeBanner: false,
       title: "demo",
       theme: ThemeData(primarySwatch: Colors.blue),
-      routerDelegate:router.delegate() ,
+      routerDelegate:router.delegate() ,//Gezinme (routing) işlemlerini yönetmek için kullanılan sınıfları belirtir. 
       routeInformationParser: router.defaultRouteParser(),
        
     ));
@@ -81,6 +84,7 @@ class AuthWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final firebaseUser = context.watch<User?>();
+    
 
     if (firebaseUser != null) {
       return const HomePage();
