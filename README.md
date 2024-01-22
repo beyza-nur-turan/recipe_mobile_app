@@ -1,51 +1,23 @@
-# Proje Görselleri
 
-## Resim 1-2
+# Project Images
 
-![Açıklama 1](./assets/images/project_images/introduction.png)  ![Açıklama 2](./assets/images/project_images/register.png)
+| Introduction                      | Register Page                     |    Login Page                     |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| <img className="project-image" src="./assets/images/project_images/introduction.png" width="270" height="500"/> | <img className="project-image" src="./assets/images/project_images/register.png" width="250" height="500"/> | <img className="project-image" src="./assets/images/project_images/login.png" width="250" height="500"/>
 
+| Home Page                         |  Recipe Adding Page               |    Recipe Details Page            |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| <img className="project-image" src="./assets/images/project_images/home.png" width="270" height="500"/> | <img className="project-image" src="./assets/images/project_images/add_recipe.png" width="270" height="500"/> | <img className="project-image" src="./assets/images/project_images/detail_recipe.png" width="270" height="500"/>
 
+| Category Adding Page              | Category Page                     |    Sidebar                        |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| <img className="project-image" src="./assets/images/project_images/add_category.png" width="270" height="500"/> | <img className="project-image" src="./assets/images/project_images/category.png" width="270" height="500"/> | <img className="project-image" src="./assets/images/project_images/sidebar.png" width="270" height="500"/>
 
-## Resim 3
+| Question Page                     | Error Reporting Page              |    Contact Page                   |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| <img className="project-image" src="./assets/images/project_images/questions_page.png" width="270" height="500"/> | <img className="project-image" src="./assets/images/project_images/reporting_an_error.png" width="270" height="500"/> | <img className="project-image" src="./assets/images/project_images/contact.png" width="270" height="500"/>
 
-![Açıklama 3](./assets/images/project_images/login.png)
-
-## Resim 4
-
-![Açıklama 4](./assets/images/project_images/home.png)
-
-## Resim 5
-
-![Açıklama 5](./assets/images/project_images/add_recipe.png)
-
-## Resim 6
-
-![Açıklama 6](./assets/images/project_images/detail_recipe.png)
-
-## Resim 7
-
-![Açıklama 7](./assets/images/project_images/add_category.png)
-
-## Resim 8
-
-![Açıklama 8](./assets/images/project_images/category.png)
-
-## Resim 9
-
-![Açıklama 9](./assets/images/project_images/sidebar.png)
-
-## Resim 10
-
-![Açıklama 10](./assets/images/project_images/questions_page.png)
-
-## Resim 10
-
-![Açıklama 10](./assets/images/project_images/reporting_an_error.png)
-
-## Resim 10
-
-![Açıklama 10](./assets/images/project_images/contact.png)
-
-## Resim 10
-
-![Açıklama 10](./assets/images/project_images/missing_at_home.png)
+  
+| What's Missing at Home? Page      | 
+| --------------------------------- | 
+|  <img className="project-image" src="./assets/images/project_images/missing_at_home.png" width="270" height="500"/> |
