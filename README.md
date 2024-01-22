@@ -1,16 +1,53 @@
-# loginn
+# Proje Görselleri
 
-A new Flutter project.
+## Resim 1
 
-## Getting Started
+![Açıklama 1](./assets/images/project_images/introduction.png)
 
-This project is a starting point for a Flutter application.
+## Resim 2
 
-A few resources to get you started if this is your first Flutter project:
+![Açıklama 2](./assets/images/project_images/register.png)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Resim 3
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Açıklama 3](./assets/images/project_images/login.png)
+
+## Resim 4
+
+![Açıklama 4](./assets/images/project_images/home.png)
+
+## Resim 5
+
+![Açıklama 5](./assets/images/project_images/add_recipe.png)
+
+## Resim 6
+
+![Açıklama 6](./assets/images/project_images/detail_recipe.png)
+
+## Resim 7
+
+![Açıklama 7](./assets/images/project_images/add_category.png)
+
+## Resim 8
+
+![Açıklama 8](./assets/images/project_images/category.png)
+
+## Resim 9
+
+![Açıklama 9](./assets/images/project_images/sidebar.png)
+
+## Resim 10
+
+![Açıklama 10](./assets/images/project_images/questions_page.png)
+
+## Resim 10
+
+![Açıklama 10](./assets/images/project_images/reporting_an_error.png)
+
+## Resim 10
+
+![Açıklama 10](./assets/images/project_images/contact.png)
+
+## Resim 10
+
+![Açıklama 10](./assets/images/project_images/missing_at_home.png)

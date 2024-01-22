@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:loginn/Screens/RecipeHome.dart';
 import 'package:loginn/Screens/addRecipe.dart';
 import 'package:loginn/constants.dart';
-import 'package:loginn/core/config/app_router.gr.dart';
+//import 'package:loginn/core/config/app_router.gr.dart';
 import 'package:loginn/main.dart';
 import 'package:loginn/NavigationBar/reportError.dart';
 import 'package:loginn/NavigationBar/LogOut.dart';
