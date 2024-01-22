@@ -1,12 +1,10 @@
 # Proje Görselleri
 
-## Resim 1
+## Resim 1-2
 
-![Açıklama 1](./assets/images/project_images/introduction.png)
+![Açıklama 1](./assets/images/project_images/introduction.png)  ![Açıklama 2](./assets/images/project_images/register.png)
 
-## Resim 2
 
-![Açıklama 2](./assets/images/project_images/register.png)
 
 ## Resim 3
 
